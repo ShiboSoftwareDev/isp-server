@@ -1,0 +1,22 @@
+{
+  "name": "isp-express",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "type": "module",
+  "scripts": {
+    "start": "npx webpack"
+  },
+  "author": "Ahmed Shebani",
+  "license": "ISC",
+  "dependencies": {
+    "nodemon-webpack-plugin": "^4.8.2",
+    "ts-loader": "^9.5.1",
+    "typescript": "^5.5.3",
+    "webpack": "^5.93.0",
+    "webpack-cli": "^5.1.4"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.10"
+  }
+}
