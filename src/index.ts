@@ -1,4 +1,13 @@
-import fs from "fs";
+import express from "express";
+const app = express();
+const port = 3000;
 
-const myName: number = 1;
-console.log("hey", myName);
+console.log("sdsdfdsfs dsd sd");
+
+app.get("/", (req, res) => {
+  res.send("Hello World!");
+});
+
+app.listen(port, () => {
+  console.log(`Example app listening on port ${port}`);
+});
