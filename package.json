@@ -5,9 +5,9 @@
   "main": "dist/index.js",
   "type": "module",
   "scripts": {
-    "build": "tsc",
+    "build": "npm install && tsc",
     "dev": "tsx watch src/index.ts",
-    "start": "npm run build && node dist/index.js"
+    "start": "node dist/index.js"
   },
   "author": "Ahmed Shebani",
   "license": "ISC",
