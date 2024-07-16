@@ -75,6 +75,7 @@ app.get("/user", async (req, res) => {
 
 app.patch("/user/:id", async (req, res) => {
   const { card } = req.body;
+  console.log(card);
   if (!card) return res.status(400).send("send card number");
   const id = req.params.id;
   if (!id) return res.status(401).send("specify id");
