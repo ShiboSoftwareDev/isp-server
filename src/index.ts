@@ -9,6 +9,7 @@ import {
   deleteUser,
   getPackage,
   getUser,
+  updateBalance,
 } from "./db/queries.js";
 
 app.use(express.json());
@@ -70,6 +71,25 @@ app.get("/user", async (req, res) => {
   } catch (error) {
     return res.status(500).send(error);
   }
+});
+
+app.patch("/user/:id", async (req, res) => {
+  const { card } = req.body;
+  if (!card) return res.status(400).send("send card number");
+  const id = req.params.id;
+  if (!id) return res.status(400).send("specify id");
+  console.log(card);
+  try {
+    if (card === 12345678) return res.send(await updateBalance(Number(id), 10));
+    else if (card === 23456789)
+      return res.send(await updateBalance(Number(id), 5));
+    else if (!id) return res.status(400).send("invalid card number");
+    console.log("no error");
+  } catch (error) {
+    console.log("error");
+    return res.status(500).send(error);
+  }
+  console.log("end");
 });
 
 app.delete("/user/:id", async (req, res) => {

@@ -50,6 +50,17 @@ export async function createPackage(data: InsertPackage) {
 export async function deleteUser(id: SelectUser["id"]) {
   await db.delete(usersTable).where(eq(usersTable.id, id));
 }
+export async function updateBalance(id: SelectUser["id"], amount: number) {
+  const result = await db
+    .select({ balance: usersTable.balance })
+    .from(usersTable)
+    .where(eq(usersTable.id, id));
+  return await db
+    .update(usersTable)
+    .set({ balance: (result[0].balance += amount) })
+    .where(eq(usersTable.id, id))
+    .returning();
+}
 export async function deletePackage(id: SelectPackage["id"]) {
   await db.delete(packagesTable).where(eq(packagesTable.id, id));
 }
