@@ -77,13 +77,13 @@ app.patch("/user/:id", async (req, res) => {
   const { card } = req.body;
   if (!card) return res.status(400).send("send card number");
   const id = req.params.id;
-  if (!id) return res.status(400).send("specify id");
+  if (!id) return res.status(401).send("specify id");
   console.log(card);
   try {
     if (card === 12345678) return res.send(await updateBalance(Number(id), 10));
     else if (card === 23456789)
       return res.send(await updateBalance(Number(id), 5));
-    else if (!id) return res.status(400).send("invalid card number");
+    else if (!id) return res.status(402).send("invalid card number");
     console.log("no error");
   } catch (error) {
     console.log("error");
