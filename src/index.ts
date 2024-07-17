@@ -84,13 +84,11 @@ app.patch("/user/:id", async (req, res) => {
     if (card === 12345678) return res.send(await updateBalance(Number(id), 10));
     else if (card === 23456789)
       return res.send(await updateBalance(Number(id), 5));
-    else if (!id) return res.status(402).send("invalid card number");
-    console.log("no error");
+    else return res.status(402).send("invalid card number");
   } catch (error) {
     console.log("error");
     return res.status(500).send(error);
   }
-  console.log("end");
 });
 
 app.delete("/user/:id", async (req, res) => {
